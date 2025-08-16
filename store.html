@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --dark: #333;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: var(--dark);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .offer-banner {
+            background-color: #FFD700;
+            color: #D4AF37;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+            border-bottom: 2px dashed #D4AF37;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .feature-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            min-width: 250px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #574fdb;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>🌟 My Awesome Store 🌟</h1>
+        <p>Your one-stop shop for everything!</p>
+    </header>
+    
+    
+    <div class="offer-banner">
+        🎉 SPECIAL LIMITED TIME OFFER! 🎉 Get your store ABSOLUTELY FREE for 2 months! No hidden charges!
+    </div>
+    
+    <div class="container">
+        <section class="feature-section">
+            <div class="feature-card">
+                <h3>📸 Upload Your Pictures</h3>
+                <p>Showcase your products with beautiful images and detailed descriptions.</p>
+                <form id="picture-upload">
+                    <div class="form-group">
+                        <label for="picture">Select Picture</label>
+                        <input type="file" id="picture" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="picture-details">Picture Details</label>
+                        <textarea id="picture-details" rows="3" placeholder="Describe your picture..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile-model">Mobile Model (if applicable)</label>
+                        <input type="text" id="mobile-model" placeholder="e.g. iPhone 12, Samsung S21">
+                    </div>
+                    <button type="submit">Upload Picture</button>
+                </form>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📞 Contact Information</h3>
+                <p>Let customers reach you easily with your WhatsApp number.</p>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp" placeholder="e.g. +923001234567">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-name">Your Name</label>
+                        <input type="text" id="contact-name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="business-hours">Business Hours</label>
+                        <input type="text" id="business-hours" placeholder="e.g. 10AM-8PM">
+                    </div>
+                    <button type="submit">Save Contact Info</button>
+                </form>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🚚 Delivery Options</h3>
+                <p>Set up delivery options and let customers share their location.</p>
+                <form id="delivery-form">
+                    <div class="form-group">
+                        <label for="delivery-areas">Delivery Areas</label>
+                        <input type="text" id="delivery-areas" placeholder="Areas you deliver to">
+                    </div>
+                    <div class="form-group">
+                        <label for="delivery-charges">Delivery Charges</label>
+                        <input type="text" id="delivery-charges" placeholder="e.g. Free, Rs. 100, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="delivery-time">Estimated Delivery Time</label>
+                        <input type="text" id="delivery-time" placeholder="e.g. 1-2 days">
+                    </div>
+                    <button type="button" id="location-btn">Share Your Location</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2023 My Awesome Store. Currently FREE for all users!</p>
+    </footer>
+    
+    <script>
+        // Location sharing functionality
+        document.getElementById('location-btn').addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    alert('Location shared successfully!\nLatitude: ' + position.coords.latitude + 
+                          '\nLongitude: ' + position.coords.longitude);
+                }, function(error) {
+                    alert('Error getting location: ' + error.message);
+                });
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+        
+        // Form submission handlers
+        document.getElementById('picture-upload').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Picture uploaded successfully!');
+        });
+        
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Contact information saved!');
+        });
+        
+        document.getElementById('delivery-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Delivery preferences updated!');
+        });
+    </script>
+</body>
+</html>
