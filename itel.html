@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itel Mobiles | Mobile Galaxy</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px;
+            background-color: #111;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: #00bfff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .mobile-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.1);
+            transition: transform 0.3s;
+        }
+        .mobile-card:hover {
+            transform: translateY(-5px);
+        }
+        .image-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            border-bottom: 2px solid #00bfff;
+        }
+        .mobile-image {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background: #000;
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+        }
+        .mobile-info {
+            padding: 20px;
+        }
+        .mobile-title {
+            font-size: 24px;
+            margin: 0 0 10px;
+            color: #00bfff;
+        }
+        .mobile-specs {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            background: #00bfff;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #0084b4;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: #666;
+            margin-top: 40px;
+        }
+        .back-link {
+            display: inline-block;
+            color: #00bfff;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                gap: 15px;
+                padding: 10px;
+            }
+            .mobile-image {
+                height: 250px;
+            }
+            .mobile-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mobile Galaxy</h1>
+        <p>Compare, Choose, Connect</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Latest Mobiles</a>
+        <a href="#">Comparison</a>
+        <a href="#">Brands</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="mobile-card">
+            <div class="image-container">
+                <img src="s23.jpg" alt="s23" class="mobile-image">
+                <img src="s 23 1.jpg" alt="box" class="mobile-image">
+            </div>
+            <div class="mobile-info">
+                <h2 class="mobile-title">Itel S23</h2>
+                <p class="mobile-specs">
+                    • 6.6" HD+ IPS LCD Display<br>
+                    • Unisoc T606 Processor<br>
+                    • 50MP + AI Lens Dual Camera<br>
+                    • 5000mAh Battery with 10W Charging<br>
+                    • 4GB RAM + 128GB Storage
+                </p>
+                <a href="#" class="btn">View Details</a>
+            </div>
+        </div>
+
+        <div class="mobile-card">
+            <div class="image-container">
+                <img src="itel p40.jpg" alt="itel p40" class="mobile-image">
+                <img src="itel p40 1.jpg" alt="look" class="mobile-image">
+            </div>
+            <div class="mobile-info">
+                <h2 class="mobile-title">Itel P40</h2>
+                <p class="mobile-specs">
+                    • 6.6" HD+ IPS LCD Display<br>
+                    • Unisoc SC9863A Processor<br>
+                    • 13MP + QVGA Dual Camera<br>
+                    • 6000mAh Massive Battery<br>
+                    • 4GB RAM + 64GB Storage
+                </p>
+                <a href="#" class="btn">View Details</a>
+            </div>
+        </div>
+
+        <div class="mobile-card">
+            <div class="image-container">
+                <img src="itel a60.jpg" alt="itel a60" class="mobile-image">
+                <img src="tel a60  1.jpg" alt="" class="mobile-image">
+            </div>
+            <div class="mobile-info">
+                <h2 class="mobile-title">Itel A60</h2>
+                <p class="mobile-specs">
+                    • 6.6" HD+ IPS LCD Display<br>
+                    • Unisoc SC9863A Processor<br>
+                    • 8MP + QVGA Dual Camera<br>
+                    • 5000mAh Long-lasting Battery<br>
+                    • 4GB RAM + 64GB Storage
+                </p>
+                <a href="#" class="btn">View Details</a>
+            </div>
+        </div>
+
+        <div class="mobile-card">
+            <div class="image-container">
+                <img src="itel vision 5plus.jpg" alt="vision 5 plus" class="mobile-image">
+                <img src="itel vision 5 plus 2.jpg" alt="look itel" class="mobile-image">
+                <img src="itel vision 5 plus 1.jpg" alt="" class="mobile-image">
+            </div>
+            <div class="mobile-info">
+                <h2 class="mobile-title">Itel Vision 5 Plus</h2>
+                <p class="mobile-specs">
+                    • 6.82" HD+ IPS LCD Display<br>
+                    • Unisoc SC9863A Processor<br>
+                    • 13MP + 2MP + AI Lens Triple Camera<br>
+                    • 6000mAh Massive Battery<br>
+                    • 4GB RAM + 128GB Storage
+                </p>
+                <a href="#" class="btn">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Mobile Galaxy. All Rights Reserved.</p>
+    </div>
+</body>
+</html>
