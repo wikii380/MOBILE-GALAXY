@@ -1,0 +1,35 @@
+/* Contact section common style */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Each contact item */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9f9;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.contact-item:hover {
+  background: #eaeaea;
+  transform: scale(1.05);
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .contact-info {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contact-item {
+    justify-content: center;
+  }
+}
