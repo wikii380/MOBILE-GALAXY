@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePlus Mobile Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: #fff;
+            min-height: 100vh;
+            background-attachment: fixed;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .logo {
+            width: 200px;
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(221, 36, 118, 0.4);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .mobiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .mobile-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(221, 36, 118, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .mobile-image {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-image img {
+            max-height: 180px;
+            max-width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-card:hover .mobile-image img {
+            transform: scale(1.05);
+        }
+
+        .mobile-info {
+            padding: 20px;
+        }
+
+        .mobile-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .mobile-features {
+            list-style-type: none;
+            margin: 15px 0;
+        }
+
+        .mobile-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-features li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-features li i {
+            color: #dd2476;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(221, 36, 118, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .mobiles-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobiles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <svg viewBox="0 0 200 50">
+                <text x="20" y="35" font-family="Arial" font-size="40" fill="#fff">OnePlus</text>
+                <rect x="0" y="40" width="200" height="3" fill="#dd2476" />
+            </svg>
+        </div>
+        <h1>Premium Mobile Collection</h1>
+        <p class="subtitle">Discover the latest OnePlus smartphones featuring cutting-edge technology, stunning displays, and unparalleled performance. Never Settle for anything less than extraordinary.</p>
+        
+        <div class="filters">
+            <button class="filter-btn active">All Models</button>
+            <button class="filter-btn">Latest</button>
+            <button class="filter-btn">Flagship</button>
+            <button class="filter-btn">Mid-Range</button>
+            <button class="filter-btn">Budget</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="mobiles-grid">
+            <!-- OnePlus 11 -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus11.jpg" alt="OnePlus 11">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 11 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 8 Gen 2</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.7" 120Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> Triple Hasselblad Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh Battery</li>
+                        <li><i class="fas fa-memory"></i> 8/12GB RAM, 128/256GB</li>
+                    </ul>
+                    <div class="price">From ₹56,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus 10 Pro -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="one plus 10 pro.jpg" alt="OnePlus 10 Pro">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 10 Pro</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 8 Gen 1</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.7" LTPO 2.0 AMOLED</li>
+                        <li><i class="fas fa-camera"></i> 48MP Hasselblad Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 80W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹66,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus 10T -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus 10t.jpg" alt="OnePlus 10T">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 10T 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 8+ Gen 1</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.7" 120Hz Fluid AMOLED</li>
+                        <li><i class="fas fa-camera"></i> 50MP Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 4800mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 150W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹49,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus 9 Pro -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus 9pro.jpg" alt="OnePlus 9 Pro">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 9 Pro</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 888</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.7" 120Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> Hasselblad Quad Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 4500mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 65W Warp Charge</li>
+                    </ul>
+                    <div class="price">From ₹64,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord CE 3 Lite -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus nord ce 3 lite.jpg" alt="OnePlus Nord CE 3 Lite">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">Nord CE 3 Lite</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 695</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.72" 120Hz LCD</li>
+                        <li><i class="fas fa-camera"></i> 108MP Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 67W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹19,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord 3 -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus nord 3.jpg" alt="OnePlus Nord 3">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus Nord 3 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Dimensity 9000</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.74" 120Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> 50MP Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 80W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹33,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord CE 3 -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus nord ce 3..jpg" alt="OnePlus Nord CE 3">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">Nord CE 3 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 782G</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.7" 120Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> 50MP Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 80W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹26,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus 8T -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus 8t.jpg" alt="OnePlus 8T">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 8T</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 865</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.55" 120Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> Quad Camera Setup</li>
+                        <li><i class="fas fa-battery-full"></i> 4500mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 65W Warp Charge</li>
+                    </ul>
+                    <div class="price">From ₹42,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord 2T -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus nord 2t 5g.jpg" alt="OnePlus Nord 2T">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">Nord 2T 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Dimensity 1300</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.43" 90Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> 50MP Sony IMX766</li>
+                        <li><i class="fas fa-battery-full"></i> 4500mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 80W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹28,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord CE 2 Lite -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus ce 2lite.jpg" alt="OnePlus Nord CE 2 Lite">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">Nord CE 2 Lite</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 695</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.59" 120Hz LCD</li>
+                        <li><i class="fas fa-camera"></i> 64MP Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 33W Fast Charging</li>
+                    </ul>
+                    <div class="price">From ₹18,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus 7 Pro -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus 7pro.jpg" alt="OnePlus 7 Pro">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 7 Pro</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 855</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.67" 90Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> Pop-up Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 4000mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 30W Warp Charge</li>
+                    </ul>
+                    <div class="price">From ₹48,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord N30 -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="nord n30 5g.jpg" alt="OnePlus Nord N30">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">Nord N30 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 695</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.72" 120Hz LCD</li>
+                        <li><i class="fas fa-camera"></i> 108MP Main Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 50W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹24,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus 9RT -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus 9rt.jpg" alt="OnePlus 9RT">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 9RT 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 888</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.62" 120Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> 50MP Sony IMX766</li>
+                        <li><i class="fas fa-battery-full"></i> 4500mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 65T Warp Charge</li>
+                    </ul>
+                    <div class="price">From ₹42,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord N20 -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="n20 5g.jpg" alt="OnePlus Nord N20">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">Nord N20 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 695</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.43" AMOLED Display</li>
+                        <li><i class="fas fa-camera"></i> 64MP Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 4500mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 33W Fast Charging</li>
+                    </ul>
+                    <div class="price">From ₹22,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus 6T -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="oneplus 6t.jpg" alt="OnePlus 6T">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">OnePlus 6T</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Snapdragon 845</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.41" Optic AMOLED</li>
+                        <li><i class="fas fa-camera"></i> Dual 16+20MP Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 3700mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> Dash Charge</li>
+                    </ul>
+                    <div class="price">From ₹37,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- OnePlus Nord CE 2 -->
+            <div class="mobile-card">
+                <div class="mobile-image">
+                    <img src="ce2.jpg" alt="OnePlus Nord CE 2">
+                </div>
+                <div class="mobile-info">
+                    <h3 class="mobile-name">Nord CE 2 5G</h3>
+                    <ul class="mobile-features">
+                        <li><i class="fas fa-microchip"></i> Dimensity 900</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6.43" 90Hz AMOLED</li>
+                        <li><i class="fas fa-camera"></i> 64MP Triple Camera</li>
+                        <li><i class="fas fa-battery-full"></i> 4500mAh Battery</li>
+                        <li><i class="fas fa-bolt"></i> 65W SuperVOOC</li>
+                    </ul>
+                    <div class="price">From ₹23,999</div>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 OnePlus Mobile Collection. All rights reserved.</p>
+        <p>Never Settle | Flagship Killer | Smooth Beyond Belief</p>
+    </div>
+
+    <script>
+        // Filter button interaction
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // In a real implementation, this would filter the products
+            });
+        });
+        
+        // Add hover effect to cards
+        document.querySelectorAll('.mobile-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
